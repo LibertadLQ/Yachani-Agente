@@ -1,1 +1,102 @@
-<!-- Pendiente: pantalla «Tutor · Grupos · Mis grupos» del Figma -->
+<header class="encabezado">
+  <nav class="migas" aria-label="Ruta">
+    <span>Yachani</span>
+    <mat-icon>arrow_forward</mat-icon>
+    <span>Mis grupos</span>
+  </nav>
+  <h1 class="titulo">Mis grupos</h1>
+</header>
+
+<section class="presentacion">
+  <span class="presentacion-icono"><mat-icon>group</mat-icon></span>
+  <div class="presentacion-texto">
+    <h2>Tus grupos de estudio</h2>
+    <p>Revisa cupos, solicitudes y horarios de los grupos que diriges.</p>
+  </div>
+  <div class="presentacion-acciones">
+    <button matButton="outlined" type="button">
+      <mat-icon>auto_awesome</mat-icon>
+      Crear con IA
+    </button>
+    <a matButton="filled" routerLink="/tutor/crear-grupo">
+      <mat-icon>add</mat-icon>
+      Crear grupo
+    </a>
+  </div>
+</section>
+
+<section class="resumen" aria-label="Resumen">
+  @for (dato of resumen; track dato.texto) {
+    <mat-card appearance="outlined" class="resumen-tarjeta">
+      <span class="resumen-icono"><mat-icon>{{ dato.icono }}</mat-icon></span>
+      <span class="resumen-datos">
+        <strong>{{ dato.valor }}</strong>
+        <span>{{ dato.texto }}</span>
+      </span>
+    </mat-card>
+  }
+</section>
+
+<h2 class="subtitulo">3 grupos</h2>
+
+<form class="filtros" [formGroup]="filtros">
+  <mat-form-field appearance="outline" class="filtro-busqueda" subscriptSizing="dynamic">
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput formControlName="busqueda" placeholder="Busca por nombre o curso del grupo" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filtro-estado" subscriptSizing="dynamic">
+    <mat-select formControlName="estado" aria-label="Estado">
+      @for (estado of estados; track estado.valor) {
+        <mat-option [value]="estado.valor">{{ estado.texto }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<section class="grupos">
+  @for (grupo of grupos; track grupo.siglas) {
+    <mat-card appearance="outlined" class="grupo">
+      <div class="grupo-cabecera">
+        <span class="grupo-siglas">{{ grupo.siglas }}</span>
+        <span class="grupo-cupos" [class.completo]="grupo.completo">{{ grupo.cupos }}</span>
+      </div>
+
+      <h3 class="grupo-nombre">{{ grupo.nombre }}</h3>
+      <p class="grupo-descripcion">{{ grupo.descripcion }}</p>
+
+      <mat-chip-set class="grupo-etiquetas" aria-label="Etiquetas">
+        @for (etiqueta of grupo.etiquetas; track etiqueta) {
+          <mat-chip>{{ etiqueta }}</mat-chip>
+        }
+      </mat-chip-set>
+
+      <div class="grupo-datos">
+        <div class="grupo-fila">
+          <span class="grupo-dato"><mat-icon>group</mat-icon>{{ grupo.estudiantes }}</span>
+          <span>{{ grupo.estado }}</span>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="grupo.progreso" />
+        <span class="grupo-dato"><mat-icon>calendar_today</mat-icon>{{ grupo.horario }}</span>
+      </div>
+
+      @if (grupo.solicitudes) {
+        <div class="grupo-solicitudes">
+          <span class="grupo-dato"><mat-icon>inbox</mat-icon>{{ grupo.solicitudes }}</span>
+          <button matButton type="button" class="revisar">
+            Revisar
+            <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+          </button>
+        </div>
+      }
+
+      <div class="grupo-acciones">
+        <button matButton="tonal" type="button">Ver grupo</button>
+        <button matButton="outlined" type="button">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+      </div>
+    </mat-card>
+  }
+</section>
