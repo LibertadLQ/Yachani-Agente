@@ -1,1 +1,48 @@
-<!-- Pendiente: pantalla «Mazo · Crear» del Figma -->
+<header class="encabezado">
+  <h1 class="titulo">Crear mazo</h1>
+  <p class="subtitulo">Tu mazo es personal. Podrás compartirlo en tus grupos.</p>
+</header>
+
+<!-- Pasos: solo el 1 está activo; el 2 y el 3 quedan dibujados -->
+<ol class="pasos">
+  @for (paso of pasos; track paso.numero) {
+    <li class="paso" [class.actual]="paso.actual">
+      <span class="paso-numero">{{ paso.numero }}</span>
+      <span class="paso-texto">{{ paso.texto }}</span>
+    </li>
+  }
+</ol>
+
+<div class="pasos-movil">
+  <span class="paso-chip">Paso 1 de 3</span>
+  <span class="paso-actual">Datos del mazo</span>
+</div>
+
+<mat-card appearance="outlined" class="tarjeta">
+  <form [formGroup]="form">
+    <label class="etiqueta" for="titulo">Título del mazo *</label>
+    <mat-form-field appearance="outline" class="campo">
+      <input matInput id="titulo" formControlName="titulo" />
+      <mat-hint>Hasta 120 caracteres.</mat-hint>
+      @if (form.controls.titulo.hasError('maxlength')) {
+        <mat-error>El título puede tener hasta 120 caracteres.</mat-error>
+      } @else {
+        <mat-error>Ingresa el título del mazo.</mat-error>
+      }
+    </mat-form-field>
+
+    <label class="etiqueta" for="descripcion">Descripción (opcional)</label>
+    <mat-form-field appearance="outline" class="campo">
+      <textarea matInput id="descripcion" formControlName="descripcion" rows="4"></textarea>
+      <mat-hint>Hasta 500 caracteres.</mat-hint>
+      <mat-error>La descripción puede tener hasta 500 caracteres.</mat-error>
+    </mat-form-field>
+
+    <div class="acciones">
+      <a matButton="outlined" routerLink="/estudiante/mis-mazos">Cancelar</a>
+      <button matButton="filled" type="button" routerLink="/estudiante/mis-mazos" [disabled]="form.invalid">
+        Crear y agregar tarjetas
+      </button>
+    </div>
+  </form>
+</mat-card>

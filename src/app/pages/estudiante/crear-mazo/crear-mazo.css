@@ -1,0 +1,146 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-6);
+  --borde-campo: #7c6a88;
+  --mat-card-outlined-outline-color: var(--color-contenido-borde);
+  --mat-card-outlined-container-color: var(--color-contenido-superficie);
+  --mat-card-outlined-container-shape: var(--radio-tarjeta);
+}
+
+.titulo {
+  margin: 0 0 var(--espacio-2);
+  font: 700 40px/48px var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+.subtitulo {
+  margin: 0;
+  font: var(--texto-parrafo);
+  color: var(--color-contenido-texto-suave);
+}
+
+/* Indicador de pasos (escritorio) */
+.pasos {
+  display: flex;
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.paso {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  width: 220px;
+  font: 500 14px/20px var(--fuente);
+  color: var(--color-contenido-texto-suave);
+}
+
+.paso-numero {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-seleccion);
+  color: var(--color-primario);
+}
+
+.paso.actual {
+  color: var(--color-primario);
+}
+
+.paso.actual .paso-numero {
+  background: var(--color-primario);
+  color: var(--color-texto-principal);
+}
+
+/* Indicador de pasos (móvil) */
+.pasos-movil {
+  display: none;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+.paso-chip {
+  padding: var(--espacio-2);
+  border-radius: var(--radio-control);
+  background: var(--color-seleccion);
+  font: 400 12px/16px var(--fuente);
+  color: var(--color-primario);
+}
+
+.paso-actual {
+  font: 500 14px/20px var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+/* Formulario · Figma «Recursos/Campo» */
+.tarjeta {
+  padding: var(--espacio-8);
+}
+
+.etiqueta {
+  display: block;
+  margin-bottom: var(--espacio-2);
+  font: 500 14px/20px var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+.campo {
+  width: 100%;
+  margin-bottom: var(--espacio-4);
+  --mat-form-field-container-height: 48px;
+  --mat-form-field-container-vertical-padding: 12px;
+  --mat-form-field-container-text-size: 14px;
+  --mat-form-field-outlined-container-shape: var(--radio-control);
+  --mat-form-field-outlined-outline-color: var(--borde-campo);
+  --mat-form-field-subscript-text-size: 12px;
+}
+
+.campo textarea {
+  min-height: 88px;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--espacio-3);
+  --mat-button-filled-container-shape: var(--radio-control);
+  --mat-button-filled-label-text-color: var(--color-texto-principal);
+  --mat-button-outlined-container-shape: var(--radio-control);
+  --mat-button-outlined-outline-color: var(--color-primario);
+  --mat-button-outlined-outline-width: 1.5px;
+  --mat-button-outlined-label-text-color: var(--color-primario);
+}
+
+.acciones .mat-mdc-button-base {
+  height: 48px;
+  padding: 0 var(--espacio-6);
+}
+
+/* Móvil · Figma «Mazo · Crear · Móvil» */
+@media (max-width: 959px) {
+  .titulo {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .pasos {
+    display: none;
+  }
+
+  .pasos-movil {
+    display: flex;
+  }
+
+  .tarjeta {
+    padding: var(--espacio-6);
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+}
