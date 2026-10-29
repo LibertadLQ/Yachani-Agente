@@ -1,1 +1,182 @@
-<!-- Pendiente: pantalla «Tutor · Grupos · Crear grupo – Formulario» del Figma -->
+<header class="encabezado">
+  <nav class="migas" aria-label="Ruta">
+    <span>Yachani</span>
+    <mat-icon>arrow_forward</mat-icon>
+    <span>Crear grupo</span>
+  </nav>
+  <h1 class="titulo">Crear grupo</h1>
+</header>
+
+<a matButton class="volver" routerLink="/tutor/mis-grupos">
+  <mat-icon>arrow_back</mat-icon>
+  Volver a mis grupos
+</a>
+
+<section class="presentacion">
+  <span class="presentacion-icono"><mat-icon>add</mat-icon></span>
+  <div class="presentacion-texto">
+    <h2>Crea un nuevo grupo</h2>
+    <p>Completa los datos y empieza a recibir solicitudes de estudiantes.</p>
+  </div>
+  <button matButton="outlined" type="button" class="boton-ia">
+    <mat-icon>auto_awesome</mat-icon>
+    Prefiero crearlo con IA
+  </button>
+</section>
+
+<div class="contenido">
+  <mat-card appearance="outlined" class="formulario">
+    <form [formGroup]="form">
+      <h2 class="formulario-titulo">Información del grupo</h2>
+      <p class="formulario-ayuda">Así lo verán los estudiantes al explorar grupos.</p>
+
+      <label class="etiqueta" for="nombre">Nombre del grupo *</label>
+      <mat-form-field appearance="outline" class="campo">
+        <input matInput id="nombre" formControlName="nombre" />
+        <mat-error>Ingresa el nombre del grupo.</mat-error>
+      </mat-form-field>
+
+      <div class="fila">
+        <div class="columna">
+          <label class="etiqueta" id="curso">Curso *</label>
+          <mat-form-field appearance="outline" class="campo">
+            <mat-select formControlName="curso" aria-labelledby="curso">
+              @for (curso of cursos; track curso.valor) {
+                <mat-option [value]="curso.valor">{{ curso.texto }}</mat-option>
+              }
+            </mat-select>
+            <mat-error>Elige un curso.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="columna">
+          <label class="etiqueta" id="modalidad">Modalidad</label>
+          <mat-form-field appearance="outline" class="campo">
+            <mat-select formControlName="modalidad" aria-labelledby="modalidad">
+              @for (modalidad of modalidades; track modalidad.valor) {
+                <mat-option [value]="modalidad.valor">{{ modalidad.texto }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <label class="etiqueta" for="descripcion">Descripción *</label>
+      <mat-form-field appearance="outline" class="campo">
+        <textarea matInput id="descripcion" formControlName="descripcion" rows="3"></textarea>
+        <mat-hint align="end">77 / 500</mat-hint>
+        @if (form.controls.descripcion.hasError('maxlength')) {
+          <mat-error>La descripción puede tener hasta 500 caracteres.</mat-error>
+        } @else {
+          <mat-error>Ingresa una descripción.</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="bloque">
+        <label class="etiqueta" id="metodo">Método de estudio *</label>
+        <mat-button-toggle-group formControlName="metodo" class="metodos" aria-labelledby="metodo"
+          hideSingleSelectionIndicator>
+          @for (metodo of metodos; track metodo.valor) {
+            <mat-button-toggle [value]="metodo.valor" class="metodo">
+              <span class="metodo-texto">{{ metodo.texto }}</span>
+              <span class="metodo-detalle">{{ metodo.detalle }}</span>
+            </mat-button-toggle>
+          }
+        </mat-button-toggle-group>
+        @if (form.controls.metodo.touched && form.controls.metodo.invalid) {
+          <mat-error>Elige un método de estudio.</mat-error>
+        }
+      </div>
+
+      <div class="bloque capacidad">
+        <div>
+          <label class="etiqueta" for="capacidad">Capacidad máxima *</label>
+          <p class="nota">Mínimo 2 estudiantes</p>
+        </div>
+        <mat-form-field appearance="outline" class="contador">
+          <button matIconButton matPrefix type="button" aria-label="Quitar un estudiante">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <input matInput id="capacidad" type="number" formControlName="capacidad" />
+          <button matIconButton matSuffix type="button" aria-label="Agregar un estudiante">
+            <mat-icon>add</mat-icon>
+          </button>
+          @if (form.controls.capacidad.hasError('min')) {
+            <mat-error>Mínimo 2 estudiantes.</mat-error>
+          } @else {
+            <mat-error>Ingresa la capacidad.</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="bloque">
+        <div class="horario-cabecera">
+          <span class="etiqueta">Horario de las sesiones</span>
+          <span class="nota">Hora de Perú</span>
+        </div>
+        @for (franja of franjas; track franja.dia) {
+          <div class="franja">
+            <mat-icon class="franja-icono">calendar_today</mat-icon>
+            <strong>{{ franja.dia }}</strong>
+            <span>{{ franja.horas }}</span>
+            <button matIconButton type="button" class="franja-quitar" aria-label="Quitar franja">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        }
+        <button matButton type="button" class="anadir">
+          <mat-icon>add</mat-icon>
+          Añadir otra franja
+        </button>
+      </div>
+
+      <div class="bloque">
+        <mat-slide-toggle formControlName="publico" class="publico">
+          <span class="publico-texto">
+            <strong>Grupo público</strong>
+            <span>Cualquier estudiante puede verlo y enviar una solicitud.</span>
+          </span>
+        </mat-slide-toggle>
+      </div>
+
+      <div class="bloque acciones">
+        <a matButton="outlined" routerLink="/tutor/mis-grupos" class="cancelar">Cancelar</a>
+        <button matButton="filled" type="button" routerLink="/tutor/mis-grupos" [disabled]="form.invalid">
+          <mat-icon>add</mat-icon>
+          Crear grupo
+        </button>
+      </div>
+    </form>
+  </mat-card>
+
+  <aside class="lateral">
+    <p class="lateral-titulo">VISTA PREVIA</p>
+    <mat-card appearance="outlined" class="vista-previa">
+      <div class="previa-cabecera">
+        <span class="previa-siglas">PW</span>
+        <span class="previa-cupos">6 cupos libres</span>
+      </div>
+      <h3 class="previa-nombre">Programación web: Angular</h3>
+      <p class="previa-descripcion">Construye componentes, servicios y rutas paso a paso con proyectos pequeños.</p>
+      <mat-chip-set class="previa-etiquetas" aria-label="Etiquetas">
+        <mat-chip>Participativo</mat-chip>
+        <mat-chip>Virtual</mat-chip>
+      </mat-chip-set>
+      <div class="previa-tutor">
+        <span class="previa-avatar">CM</span>
+        <span class="previa-tutor-datos">
+          <strong>Carlos Mendoza</strong>
+          <span><span class="estrellas">★★★★★</span> 4.8</span>
+        </span>
+      </div>
+      <span class="previa-dato"><mat-icon>group</mat-icon>0/6 estudiantes</span>
+    </mat-card>
+
+    <div class="aviso">
+      <mat-icon class="aviso-icono">verified_user</mat-icon>
+      <div>
+        <p class="aviso-titulo">Tú decides quién entra</p>
+        <p class="aviso-texto">Revisarás cada solicitud antes de aceptarla en el grupo.</p>
+      </div>
+    </div>
+  </aside>
+</div>
