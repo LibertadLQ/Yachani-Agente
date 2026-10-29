@@ -1,1 +1,24 @@
-<!-- Pendiente: pantalla «Mis mazos · Biblioteca» del Figma -->
+<header class="encabezado">
+  <div class="encabezado-texto">
+    <h1 class="titulo">Mis mazos</h1>
+    <p class="subtitulo">Tus borradores y mazos publicados, siempre en un mismo lugar.</p>
+  </div>
+  <a matButton="filled" routerLink="/estudiante/crear-mazo" class="crear">Crear mazo</a>
+</header>
+
+<section class="mazos">
+  @for (mazo of mazos; track mazo.titulo) {
+    <mat-card appearance="outlined" class="mazo">
+      <div class="portada">
+        <mat-icon>style</mat-icon>
+        <span>{{ mazo.cantidad }}</span>
+      </div>
+      <h2 class="mazo-titulo">{{ mazo.titulo }}</h2>
+      <p class="mazo-descripcion">{{ mazo.descripcion }}</p>
+      <p class="mazo-dato">{{ mazo.autorYEstado }}</p>
+      <p class="mazo-dato">{{ mazo.progresoTexto }}</p>
+      <mat-progress-bar mode="determinate" [value]="mazo.progreso" />
+      <button matButton="outlined" type="button" class="ver">Ver mazo</button>
+    </mat-card>
+  }
+</section>

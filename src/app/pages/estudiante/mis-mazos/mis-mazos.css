@@ -1,0 +1,124 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-6);
+  --mat-card-outlined-outline-color: var(--color-contenido-borde);
+  --mat-card-outlined-container-color: var(--color-contenido-superficie);
+  --mat-card-outlined-container-shape: var(--radio-tarjeta);
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4);
+}
+
+.encabezado-texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.titulo {
+  margin: 0 0 var(--espacio-2);
+  font: 700 40px/48px var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+.subtitulo {
+  margin: 0;
+  font: var(--texto-parrafo);
+  color: var(--color-contenido-texto-suave);
+}
+
+.crear {
+  height: 48px;
+  padding: 0 var(--espacio-6);
+  --mat-button-filled-container-shape: var(--radio-control);
+  --mat-button-filled-label-text-color: var(--color-texto-principal);
+}
+
+.mazos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--espacio-6);
+  align-items: start;
+}
+
+.mazo {
+  gap: var(--espacio-3);
+  padding: var(--espacio-6);
+}
+
+.portada {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  height: 32px;
+  padding: 0 var(--espacio-4);
+  border-radius: var(--radio-control);
+  background: var(--color-seleccion);
+  font: 400 12px/16px var(--fuente);
+  color: var(--color-primario);
+}
+
+.portada span {
+  flex: 1;
+  text-align: right;
+}
+
+.mazo-titulo {
+  margin: 0;
+  font: 500 20px/28px var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+.mazo-descripcion {
+  margin: 0;
+  font: 400 14px/20px var(--fuente);
+  color: var(--color-contenido-texto-suave);
+}
+
+.mazo-dato {
+  margin: 0;
+  font: 400 12px/16px var(--fuente);
+  color: var(--color-contenido-texto-suave);
+}
+
+.mazo mat-progress-bar {
+  border-radius: 4px;
+  --mat-progress-bar-track-height: 8px;
+  --mat-progress-bar-active-indicator-height: 8px;
+  --mat-progress-bar-track-color: var(--color-seleccion);
+  --mat-progress-bar-active-indicator-color: var(--color-primario);
+}
+
+.ver {
+  height: 48px;
+  --mat-button-outlined-container-shape: var(--radio-control);
+  --mat-button-outlined-outline-color: var(--color-primario);
+  --mat-button-outlined-outline-width: 1.5px;
+  --mat-button-outlined-label-text-color: var(--color-primario);
+}
+
+@media (max-width: 1199px) {
+  .mazos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Móvil · Figma «Mis mazos · Biblioteca · Móvil» */
+@media (max-width: 959px) {
+  .encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .titulo {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .mazos {
+    grid-template-columns: 1fr;
+  }
+}
