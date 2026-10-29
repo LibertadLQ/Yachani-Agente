@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tema base de Angular Material (Material 3). Sus colores se sobrescriben abajo con los de Yachani. */
+@import '@angular/material/prebuilt-themes/magenta-violet.css';
+
+/* Variables de Yachani · Figma, frame «Guidelines» */
+:root {
+  /* Primitivos · Ciruela (fondos oscuros) */
+  --ciruela-100: #6b4a80;
+  --ciruela-200: #573866;
+  --ciruela-300: #45294f;
+  --ciruela-400: #3a2045;
+  --ciruela-500: #2e183b;
+  --ciruela-600: #24122f;
+  --ciruela-700: #1a0c22;
+
+  /* Primitivos · Púrpura (botones) */
+  --purpura-100: #f3e8ff;
+  --purpura-200: #e9d5ff;
+  --purpura-300: #d8b4fe;
+  --purpura-400: #c084fc;
+  --purpura-500: #a855f7;
+  --purpura-600: #9333ea;
+  --purpura-700: #7e22ce;
+
+  /* Primitivos · Rosa (etiquetas) */
+  --rosa-100: #fdf2f8;
+  --rosa-200: #fce7f3;
+  --rosa-300: #fbcfe8;
+  --rosa-400: #f9a8d4;
+  --rosa-500: #f472b6;
+  --rosa-600: #db2777;
+
+  /* Primitivos · Neutro (textos) */
+  --neutro-100: #f8fafc;
+  --neutro-200: #e2e8f0;
+  --neutro-300: #cbd5e1;
+  --neutro-400: #94a3b8;
+  --neutro-500: #64748b;
+  --neutro-600: #334155;
+
+  /* Semánticos */
+  --color-exito: #22c55e;
+  --color-alerta: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Contexto oscuro (menú lateral) */
+  --color-fondo-principal: var(--ciruela-500);
+  --color-fondo-superficie: var(--ciruela-400);
+  --color-fondo-superficie-alta: var(--ciruela-300);
+  --color-borde-sutil: var(--ciruela-200);
+  --color-texto-principal: var(--neutro-100);
+  --color-texto-secundario: var(--neutro-300);
+
+  /* Botones y etiquetas */
+  --color-boton-fondo: var(--purpura-500);
+  --color-boton-hover: var(--purpura-600);
+  --color-boton-activo: var(--purpura-700);
+  --color-boton-texto: var(--neutro-100);
+  --color-etiqueta-fondo: var(--rosa-200);
+  --color-texto-sobre-etiqueta: var(--ciruela-500);
+
+  /* Contexto claro (contenido de las pantallas) */
+  --color-primario: var(--purpura-600);
+  --color-seleccion: var(--purpura-100);
+  --color-contenido-fondo: #f6f3f9;
+  --color-contenido-superficie: #ffffff;
+  --color-contenido-borde: #e9dff0;
+  --color-contenido-texto: var(--ciruela-500);
+  --color-contenido-texto-suave: #736a7b;
+
+  /* Tipografía · Roboto (laptop) */
+  --fuente: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --texto-titulo-principal: 700 40px/1 var(--fuente);
+  --texto-titulo-seccion: 700 28px/1 var(--fuente);
+  --texto-subtitulo: 500 20px/1 var(--fuente);
+  --texto-parrafo: 400 16px/24px var(--fuente);
+  --texto-secundario: 400 14px/1 var(--fuente);
+  --texto-boton: 500 14px/1 var(--fuente);
+  --texto-etiqueta: 500 12px/1 var(--fuente);
+
+  /* Espaciado · escala base de 4 / 8 px */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 12px;
+  --espacio-4: 16px;
+  --espacio-6: 24px;
+  --espacio-8: 32px;
+  --espacio-10: 40px;
+  --espacio-12: 48px;
+  --espacio-16: 64px;
+  --espacio-20: 80px;
+  --espacio-24: 96px;
+  --espacio-30: 120px;
+
+  /* Radios */
+  --radio-control: 12px;
+  --radio-tarjeta: 16px;
+
+  /* Angular Material con los colores y la fuente de Yachani */
+  --mat-sys-primary: var(--color-primario);
+  --mat-sys-on-primary: var(--color-boton-texto);
+  --mat-sys-primary-container: var(--color-seleccion);
+  --mat-sys-on-primary-container: var(--purpura-700);
+  --mat-sys-secondary-container: var(--color-seleccion);
+  --mat-sys-on-secondary-container: var(--purpura-700);
+  --mat-sys-error: var(--color-error);
+  --mat-sys-surface: var(--color-contenido-superficie);
+  --mat-sys-on-surface: var(--color-contenido-texto);
+  --mat-sys-on-surface-variant: var(--color-contenido-texto-suave);
+  --mat-sys-outline: var(--color-contenido-borde);
+  --mat-sys-outline-variant: var(--color-contenido-borde);
+  --mat-sys-background: var(--color-contenido-fondo);
+  --mat-sys-on-background: var(--color-contenido-texto);
+  --mat-sys-body-large-font: var(--fuente);
+  --mat-sys-body-medium-font: var(--fuente);
+  --mat-sys-body-small-font: var(--fuente);
+  --mat-sys-label-large-font: var(--fuente);
+  --mat-sys-label-medium-font: var(--fuente);
+  --mat-sys-label-small-font: var(--fuente);
+  --mat-sys-title-large-font: var(--fuente);
+  --mat-sys-title-medium-font: var(--fuente);
+  --mat-sys-title-small-font: var(--fuente);
+  --mat-sys-headline-large-font: var(--fuente);
+  --mat-sys-headline-medium-font: var(--fuente);
+  --mat-sys-headline-small-font: var(--fuente);
+
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  color: var(--color-contenido-texto);
+  background: var(--color-contenido-fondo);
+}
+
+/* Íconos: Material Symbols Rounded, como indica el Figma */
+.mat-icon.material-icons {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

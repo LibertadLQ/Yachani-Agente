@@ -1,0 +1,102 @@
+<ng-template #menu>
+  <div class="marca">
+    <span class="marca-icono"><img src="marca-estudiante.svg" width="32" height="32" alt="" /></span>
+    <span class="marca-texto">Yachani</span>
+  </div>
+
+  <div class="menu-grupo">
+    <p class="menu-titulo">MENÚ PRINCIPAL</p>
+    <mat-nav-list class="menu-lista">
+      @for (item of menuPrincipal; track item.texto) {
+        @if (item.ruta) {
+          <a mat-list-item [routerLink]="item.ruta" routerLinkActive="activo" ariaCurrentWhenActive="page"
+            (click)="menuMovil.close()">
+            <mat-icon matListItemIcon>{{ item.icono }}</mat-icon>
+            <span matListItemTitle>{{ item.texto }}</span>
+          </a>
+        } @else {
+          <mat-list-item>
+            <mat-icon matListItemIcon>{{ item.icono }}</mat-icon>
+            <span matListItemTitle>{{ item.texto }}</span>
+          </mat-list-item>
+        }
+      }
+    </mat-nav-list>
+  </div>
+
+  <div class="espacio"></div>
+
+  <div class="ayuda">
+    <p class="ayuda-titulo">¿Necesitas ayuda?</p>
+    <p class="ayuda-texto">Revisa las preguntas frecuentes o contáctanos.</p>
+  </div>
+
+  <div class="cuenta">
+    <span class="avatar avatar-menu">LC</span>
+    <span class="cuenta-datos">
+      <span class="cuenta-nombre">Leicy Cahuana</span>
+      <span class="cuenta-rol">Estudiante</span>
+    </span>
+  </div>
+</ng-template>
+
+<mat-sidenav-container class="contenedor">
+  <!-- Menú en móvil: se abre con el botón de la cabecera o con «Más» -->
+  <mat-sidenav #menuMovil mode="over" class="menu menu-movil">
+    <ng-container [ngTemplateOutlet]="menu" />
+  </mat-sidenav>
+
+  <mat-sidenav-content class="contenido">
+    <div class="pagina">
+      <!-- Menú en escritorio: siempre visible -->
+      <aside class="menu menu-escritorio">
+        <ng-container [ngTemplateOutlet]="menu" />
+      </aside>
+
+      <div class="principal">
+        <header class="cabecera">
+          <button matIconButton class="boton-menu" aria-label="Abrir menú" (click)="menuMovil.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <p class="ruta ruta-escritorio">Flashcards / Mis mazos</p>
+          <p class="ruta ruta-movil">Flashcards</p>
+
+          <button matIconButton class="boton-notificaciones" aria-label="Notificaciones">
+            <mat-icon>notifications</mat-icon>
+          </button>
+          <span class="avatar avatar-cabecera">LC</span>
+          <span class="cuenta-datos cuenta-cabecera">
+            <span class="cuenta-nombre">Leicy Cahuana</span>
+            <span class="cuenta-rol">Estudiante</span>
+          </span>
+        </header>
+
+        <main class="vista">
+          <router-outlet />
+        </main>
+
+        <!-- Navegación inferior en móvil -->
+        <nav class="navegacion-movil" aria-label="Navegación principal">
+          @for (item of navegacionMovil; track item.texto) {
+            @if (item.ruta) {
+              <a matButton class="navegacion-item" [routerLink]="item.ruta" routerLinkActive="activo"
+                ariaCurrentWhenActive="page">
+                <mat-icon>{{ item.icono }}</mat-icon>
+                <span>{{ item.texto }}</span>
+              </a>
+            } @else {
+              <button matButton class="navegacion-item" type="button">
+                <mat-icon>{{ item.icono }}</mat-icon>
+                <span>{{ item.texto }}</span>
+              </button>
+            }
+          }
+          <button matButton class="navegacion-item" type="button" (click)="menuMovil.open()">
+            <mat-icon>menu</mat-icon>
+            <span>Más</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

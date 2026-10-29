@@ -1,0 +1,284 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.contenedor {
+  height: 100%;
+  background: var(--color-contenido-fondo);
+}
+
+.pagina {
+  display: flex;
+  min-height: 100%;
+}
+
+/* Menú lateral oscuro · Figma «Recursos/Sidebar/Estudiante» */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-6);
+  width: 244px;
+  box-sizing: border-box;
+  padding: var(--espacio-6) var(--espacio-4) var(--espacio-4);
+  background: var(--color-fondo-principal);
+  color: var(--color-texto-principal);
+  --mat-sidenav-container-width: 244px;
+  --mat-sidenav-container-shape: 0;
+  --mat-sidenav-container-background-color: var(--color-fondo-principal);
+}
+
+.menu-escritorio {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.marca-icono {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-control);
+  background: var(--purpura-600);
+}
+
+.marca-texto {
+  font: 500 20px/28px var(--fuente);
+}
+
+.menu-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.menu-titulo {
+  margin: 0;
+  font: 400 12px/16px var(--fuente);
+}
+
+.menu-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: 0;
+  --mat-list-list-item-one-line-container-height: 48px;
+  --mat-list-list-item-container-shape: var(--radio-control);
+  --mat-list-list-item-label-text-color: var(--color-texto-principal);
+  --mat-list-list-item-hover-label-text-color: var(--color-texto-principal);
+  --mat-list-list-item-focus-label-text-color: var(--color-texto-principal);
+  --mat-list-list-item-leading-icon-color: var(--color-texto-principal);
+  --mat-list-list-item-hover-leading-icon-color: var(--color-texto-principal);
+  --mat-list-list-item-hover-state-layer-color: var(--color-texto-principal);
+  --mat-list-list-item-focus-state-layer-color: var(--color-texto-principal);
+  --mat-list-list-item-label-text-font: var(--fuente);
+  --mat-list-list-item-label-text-size: 14px;
+  --mat-list-list-item-label-text-line-height: 20px;
+  --mat-list-list-item-label-text-weight: 500;
+  --mat-list-list-item-leading-icon-size: 24px;
+  --mat-list-list-item-leading-icon-start-space: var(--espacio-3);
+  --mat-list-list-item-leading-icon-end-space: var(--espacio-3);
+}
+
+.menu-lista .activo {
+  background: var(--color-fondo-superficie-alta);
+}
+
+.espacio {
+  flex: 1;
+}
+
+.ayuda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: var(--espacio-4);
+  border-radius: var(--radio-tarjeta);
+  background: var(--color-fondo-superficie-alta);
+}
+
+.ayuda-titulo {
+  margin: 0;
+  font: 500 14px/20px var(--fuente);
+}
+
+.ayuda-texto {
+  margin: 0;
+  font: 400 12px/16px var(--fuente);
+}
+
+.cuenta {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font: 500 14px/20px var(--fuente);
+}
+
+.avatar-menu {
+  background: var(--color-primario);
+  color: var(--color-texto-principal);
+}
+
+.cuenta-datos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+}
+
+.cuenta-nombre {
+  font: 500 14px/20px var(--fuente);
+}
+
+.cuenta-rol {
+  font: 400 12px/16px var(--fuente);
+}
+
+/* Contenido claro · Figma «Recursos/Barra superior/Estudiante» */
+.principal {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  height: 88px;
+  box-sizing: border-box;
+  padding: var(--espacio-6);
+  background: var(--color-contenido-superficie);
+}
+
+.ruta {
+  flex: 1;
+  margin: 0;
+  font: 400 14px/20px var(--fuente);
+  color: var(--color-contenido-texto-suave);
+}
+
+.boton-menu,
+.ruta-movil {
+  display: none;
+}
+
+.boton-notificaciones {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radio-control);
+  color: var(--color-contenido-texto);
+}
+
+.avatar-cabecera {
+  background: var(--color-seleccion);
+  color: var(--color-primario);
+}
+
+.cuenta-cabecera {
+  width: 150px;
+}
+
+.cuenta-cabecera .cuenta-nombre {
+  color: var(--color-contenido-texto);
+}
+
+.cuenta-cabecera .cuenta-rol {
+  color: var(--color-contenido-texto-suave);
+}
+
+.vista {
+  display: block;
+  flex: 1;
+  padding: var(--espacio-8);
+}
+
+.navegacion-movil {
+  display: none;
+}
+
+/* Móvil · Figma «Mis mazos · Biblioteca · Móvil» */
+@media (max-width: 959px) {
+  .menu-escritorio,
+  .ruta-escritorio,
+  .avatar-cabecera,
+  .cuenta-cabecera {
+    display: none;
+  }
+
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    gap: var(--espacio-2);
+    height: 64px;
+    padding: var(--espacio-2) var(--espacio-4) var(--espacio-2) var(--espacio-2);
+  }
+
+  .boton-menu {
+    display: inline-flex;
+    color: var(--color-primario);
+  }
+
+  .ruta-movil {
+    display: block;
+    font-weight: 500;
+    color: var(--color-contenido-texto);
+  }
+
+  .boton-notificaciones {
+    color: var(--color-primario);
+  }
+
+  .vista {
+    padding: var(--espacio-4);
+  }
+
+  .navegacion-movil {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    padding: var(--espacio-2);
+    border-top: 1px solid var(--color-contenido-borde);
+    background: var(--color-contenido-superficie);
+  }
+
+  .navegacion-item {
+    flex: 1;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    height: auto;
+    min-width: 0;
+    padding: var(--espacio-2);
+    border-radius: var(--radio-control);
+    font: 400 12px/16px var(--fuente);
+    color: var(--color-contenido-texto-suave);
+  }
+
+  .navegacion-item .mat-icon {
+    margin: 0;
+  }
+
+  .navegacion-item.activo {
+    background: var(--color-seleccion);
+    color: var(--color-primario);
+  }
+}

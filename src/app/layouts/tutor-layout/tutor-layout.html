@@ -1,0 +1,77 @@
+<ng-template #menu>
+  <div class="marca">
+    <span class="marca-icono"><img src="marca-tutor.svg" width="22" height="22" alt="" /></span>
+    <span class="marca-texto">Yachani</span>
+  </div>
+
+  <p class="menu-titulo">MENÚ PRINCIPAL</p>
+  <mat-nav-list class="menu-lista">
+    @for (item of menuPrincipal; track item.texto) {
+      @if (item.ruta) {
+        <a mat-list-item [routerLink]="item.ruta" routerLinkActive="activo" ariaCurrentWhenActive="page"
+          (click)="menuMovil.close()">
+          <mat-icon matListItemIcon>{{ item.icono }}</mat-icon>
+          <span matListItemTitle>{{ item.texto }}</span>
+        </a>
+      } @else {
+        <mat-list-item>
+          <mat-icon matListItemIcon>{{ item.icono }}</mat-icon>
+          <span matListItemTitle>{{ item.texto }}</span>
+        </mat-list-item>
+      }
+    }
+  </mat-nav-list>
+
+  <div class="espacio"></div>
+
+  <mat-nav-list class="menu-lista">
+    <mat-list-item>
+      <mat-icon matListItemIcon>person</mat-icon>
+      <span matListItemTitle>Mi perfil</span>
+    </mat-list-item>
+  </mat-nav-list>
+
+  <div class="ayuda">
+    <p class="ayuda-titulo">¿Necesitas ayuda?</p>
+    <p class="ayuda-texto">Consulta nuestras preguntas frecuentes o comunícate con soporte.</p>
+  </div>
+</ng-template>
+
+<mat-sidenav-container class="contenedor">
+  <!-- Menú en móvil: se abre con el botón de la cabecera -->
+  <mat-sidenav #menuMovil mode="over" class="menu menu-movil">
+    <ng-container [ngTemplateOutlet]="menu" />
+  </mat-sidenav>
+
+  <mat-sidenav-content class="contenido">
+    <div class="pagina">
+      <!-- Menú en escritorio: siempre visible -->
+      <aside class="menu menu-escritorio">
+        <ng-container [ngTemplateOutlet]="menu" />
+      </aside>
+
+      <div class="principal">
+        <header class="cabecera">
+          <button matIconButton class="boton-menu" aria-label="Abrir menú" (click)="menuMovil.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+
+          <div class="cabecera-acciones">
+            <button matIconButton class="boton-notificaciones" aria-label="Notificaciones">
+              <mat-icon matBadge="2" matBadgeSize="small" aria-hidden="false">notifications</mat-icon>
+            </button>
+            <span class="avatar">CM</span>
+            <span class="cuenta">
+              <span class="cuenta-nombre">Carlos Mendoza</span>
+              <span class="cuenta-rol">Tutor</span>
+            </span>
+          </div>
+        </header>
+
+        <main class="vista">
+          <router-outlet />
+        </main>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

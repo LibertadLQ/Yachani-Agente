@@ -1,0 +1,220 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.contenedor {
+  height: 100%;
+  background: var(--color-contenido-fondo);
+}
+
+.pagina {
+  display: flex;
+  min-height: 100%;
+}
+
+/* Menú lateral oscuro · Figma «Tutor · Grupos · Mis grupos» */
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 244px;
+  box-sizing: border-box;
+  padding: 26px 18px 26px;
+  background: linear-gradient(180deg, #2c1239 0%, #221030 100%);
+  color: var(--color-texto-principal);
+  --mat-sidenav-container-width: 244px;
+  --mat-sidenav-container-shape: 0;
+  --mat-sidenav-container-background-color: #2c1239;
+}
+
+.menu-escritorio {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding-left: 10px;
+}
+
+.marca-icono {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--purpura-500);
+}
+
+.marca-texto {
+  font: 700 25px/1 var(--fuente);
+  color: #ffffff;
+}
+
+.menu-titulo {
+  margin: 34px 0 var(--espacio-2) 12px;
+  font: 600 10.5px/1 var(--fuente);
+  letter-spacing: 1.4px;
+  color: #b9a6cc;
+}
+
+.menu-lista {
+  padding: 0;
+  --mat-list-list-item-one-line-container-height: 44px;
+  --mat-list-list-item-container-shape: var(--radio-control);
+  --mat-list-list-item-label-text-color: #e6d9f2;
+  --mat-list-list-item-hover-label-text-color: #ffffff;
+  --mat-list-list-item-focus-label-text-color: #ffffff;
+  --mat-list-list-item-leading-icon-color: #e6d9f2;
+  --mat-list-list-item-hover-leading-icon-color: #ffffff;
+  --mat-list-list-item-hover-state-layer-color: #ffffff;
+  --mat-list-list-item-focus-state-layer-color: #ffffff;
+  --mat-list-list-item-label-text-font: var(--fuente);
+  --mat-list-list-item-label-text-size: 14px;
+  --mat-list-list-item-leading-icon-size: 18px;
+  --mat-list-list-item-leading-icon-start-space: 14px;
+  --mat-list-list-item-leading-icon-end-space: 12px;
+}
+
+.menu-lista .mat-mdc-list-item {
+  margin-bottom: 6px;
+}
+
+.menu-lista .mat-icon {
+  font-size: 18px;
+}
+
+.menu-lista .activo {
+  background: #4b2366;
+  --mat-list-list-item-label-text-color: #ffffff;
+  --mat-list-list-item-label-text-weight: 600;
+  --mat-list-list-item-leading-icon-color: #ffffff;
+}
+
+.espacio {
+  flex: 1;
+}
+
+.ayuda {
+  margin-top: var(--espacio-4);
+  padding: var(--espacio-4);
+  border-radius: 14px;
+  background: #3a1d4c;
+}
+
+.ayuda-titulo {
+  margin: 0 0 var(--espacio-2);
+  font: 700 13px/20px var(--fuente);
+  color: #ffffff;
+}
+
+.ayuda-texto {
+  margin: 0;
+  font: 400 12.5px/19.4px var(--fuente);
+  color: #d6c6e6;
+}
+
+/* Contenido claro */
+.principal {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.cabecera {
+  position: absolute;
+  top: 26px;
+  right: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.boton-menu {
+  display: none;
+}
+
+.cabecera-acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.boton-notificaciones {
+  border: 1px solid var(--color-contenido-borde);
+  border-radius: var(--radio-control);
+  background: var(--color-contenido-superficie);
+  color: var(--color-contenido-texto);
+  --mat-badge-background-color: var(--color-error);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purpura-500), var(--purpura-600));
+  font: 700 14px/1 var(--fuente);
+  color: #ffffff;
+}
+
+.cuenta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cuenta-nombre {
+  font: 700 13px/1.2 var(--fuente);
+  color: var(--color-contenido-texto);
+}
+
+.cuenta-rol {
+  font: 400 12px/1.2 var(--fuente);
+  color: var(--color-contenido-texto-suave);
+}
+
+.vista {
+  display: block;
+  padding: 26px 34px 34px;
+}
+
+/* Móvil · Figma «Tutor · Grupos · Mis grupos» 390 px */
+@media (max-width: 959px) {
+  .menu-escritorio {
+    display: none;
+  }
+
+  .cabecera {
+    top: 20px;
+    left: 16px;
+    right: 16px;
+    justify-content: space-between;
+  }
+
+  .boton-menu {
+    display: inline-flex;
+    border: 1px solid var(--color-contenido-borde);
+    border-radius: 10px;
+    background: var(--color-contenido-superficie);
+    color: var(--color-contenido-texto);
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cuenta {
+    display: none;
+  }
+
+  /* La página deja a la izquierda el espacio del botón de menú (Figma: x = 62 px) */
+  .vista {
+    padding: 20px 16px 24px;
+  }
+}
