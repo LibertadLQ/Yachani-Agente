@@ -9,11 +9,6 @@ Aplicación web responsiva para formar grupos de estudio, compartir materiales y
 - UI: Angular Material
 - Gráficos: ninguno
 
-## Cómo trabajar
-Haz solo la pantalla que te pida. Léela en el Figma, impleméntala y verifica que compile.
-Al terminar, lista los archivos creados y qué quedó pendiente.
-No toques rutas, layouts ni tema.
-
 ## Estructura
 Sigue la siguiente estructura:
 
@@ -34,6 +29,13 @@ src/app/
         └── crear-mazo/              # UI 4 · Figma: "Mazo · Crear" (solo el paso 1; los pasos 2 y 3 quedan dibujados)
 ```
 Un grupo es un conjunto de pantallas que comparten el mismo layout.
+
+# Política (reglas para el agente)
+
+## Cómo trabajar
+Haz solo la pantalla que te pida. Léela en el Figma, impleméntala y verifica que compile.
+Al terminar, lista los archivos creados y qué quedó pendiente.
+No toques rutas, layouts ni tema.
 
 ## Alcance
 Solo dibuja cada pantalla y conéctala: formularios con sus campos, listas con `@for`,
